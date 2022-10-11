@@ -189,9 +189,9 @@ export default () => {
         buttonAction={isGameOn ? continueGame : startGame}
       />
       {resultBox?.title && resultBox.title.length > 20 ? (
-        <h4 className='result-title'>{resultBox.title}</h4>
+        <h4 className='result-title text-center'>{resultBox.title}</h4>
       ) : (
-        <h1 className='result-title'>{resultBox.title}</h1>
+        <h1 className='result-title text-center'>{resultBox.title}</h1>
       )}
       <Footer clearAwards={clearAwards}></Footer>
     </Container>

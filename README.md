@@ -1,12 +1,13 @@
-## Spell A 'Moji
+## [Spell A 'Moji](https://www.spellamoji.com)
 
-Love emojis? Spell them, learn them and collect them.
+Your favorite emojites. Spell them, learn them and collect them.
 
 ---
 
 ### Purpose
 
 - Simple app using unicode to help early readers and non-native-English-speakers of any age to learn how to spell.
+- Filter words by easy and hard difficulty levels (length 5 and under, length 6+) respectively.
 
 ---
 

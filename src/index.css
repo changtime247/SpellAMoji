@@ -1,6 +1,7 @@
 /* Variables */
 :root {
     --clr-input-effect: #888;
+    /* background: url("./background.jpg") 0 0 / cover no-repeat; */
 }
 
 .correct-input {
@@ -22,13 +23,15 @@ html {
 }
 
 body {
-    background: #aaa;
+    /* background: #aaa; */
+    background: url("./chalkboard.jpg") 0 0 / cover no-repeat;
     font-weight: bold;
     margin: 3rem 0 0 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 90%;
     width: 100%;
+    color: white;
 }
 
 #root {
@@ -40,29 +43,29 @@ body {
 }
 
 /* start of input modifications */
-input {
+input.form-control {
     max-width: fit-content;
     width: 3rem !important;
 }
 
-input:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
+input.form-control:focus,
+input.form-control[type="text"]:focus,
+input.form-control[type="password"]:focus,
+input.form-control[type="datetime"]:focus,
+input.form-control[type="datetime-local"]:focus,
+input.form-control[type="date"]:focus,
+input.form-control[type="month"]:focus,
+input.form-control[type="time"]:focus,
+input.form-control[type="week"]:focus,
+input.form-control[type="number"]:focus,
+input.form-control[type="email"]:focus,
+input.form-control[type="url"]:focus,
+input.form-control[type="search"]:focus,
+input.form-control[type="tel"]:focus,
+input.form-control[type="color"]:focus,
 .uneditable-input:focus {
     border-color: var(--clr-input-effect) !important;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px var(--clr-input-effect) !important;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1) inset, 0 0 12px var(--clr-input-effect) !important;
     outline: 0 none !important;
 }
 
@@ -81,7 +84,7 @@ input[type="color"]:focus,
 }
 
 /* input css jiggle effect  */
-input:empty {
+input.form-control:empty {
     animation: jiggle 0.2s 3;
     animation-duration: 0.2s;
     animation-name: jiggle;
@@ -174,6 +177,10 @@ input:empty {
     color: black;
 }
 
+h1.text-center+h1.text-center {
+    font-size: 8rem;
+}
+
 .hint {
     color: #007bff;
 }
@@ -199,6 +206,8 @@ input:empty {
 .answer-box-letters {
     height: 3rem;
     width: 2.5rem;
+    border: 3px solid black;
+    margin: 0 auto;
 }
 
 /* Footer component */
@@ -212,4 +221,66 @@ input:empty {
 .navbar {
     border: none;
     margin: auto 1rem;
+}
+
+/* flip effect in Header Component */
+.tgl-flip+.tgl-btn {
+    font-size: 1.25rem;
+    padding: 2px;
+    margin: 0.33rem;
+    transition: all 0.2s ease;
+    perspective: 300px;
+    border: none;
+}
+
+.tgl-flip+.tgl-btn:after,
+.tgl-flip+.tgl-btn:before {
+    display: inline-block;
+    transition: all 0.4s ease;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 1rem;
+    height: 1.725rem;
+    font-weight: bold;
+    color: #666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+.tgl-flip+.tgl-btn:after {
+    content: attr(data-tg-on);
+    background: #d1ebdf;
+    transform: rotateY(-180deg);
+}
+
+.tgl-flip+.tgl-btn:before {
+    background: #ccc;
+    color: #ccc;
+    content: attr(data-tg-off);
+}
+
+.tgl-flip+.tgl-btn:active:before {
+    transform: rotateY(-20deg);
+}
+
+.tgl-flip:checked+.tgl-btn:before {
+    transform: rotateY(180deg);
+}
+
+.tgl-flip:checked+.tgl-btn:after {
+    transform: rotateY(0);
+    left: 0;
+    background: #666;
+}
+
+.tgl-flip:checked+.tgl-btn:active:after {
+    transform: rotateY(20deg);
+}
+
+input.tgl-flip[type="checkbox"] {
+    display: none;
 }

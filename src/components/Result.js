@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-export default ({ buttonAction, disabled, title, buttonLabel }) => (
+export default ({ buttonAction, disabled, buttonLabel }) => (
   <Card
     bg='transparent'
     disabled={disabled}

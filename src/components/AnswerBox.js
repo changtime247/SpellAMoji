@@ -13,7 +13,7 @@ export default ({ correctlyGuessedLetters, wordFromAPI }) => (
             className={`m-1 rounded text-center answer-box-letters ${
               correctlyGuessedLetters.find((x) => x === letter)
                 ? 'bg-success'
-                : 'bg-dark'
+                : 'bg-danger'
             }`}
             {...(wordFromAPI.length > 8 ? { xs: 'auto' } : { xs: '12' })}
           >

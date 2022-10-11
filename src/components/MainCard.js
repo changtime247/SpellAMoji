@@ -29,15 +29,15 @@ const MainCard = ({
         <Card.Title>
           <h1 className='text-center'>What is this emoji?</h1>
           <Emoji emojiUnicode={emojiUnicode} className='question'></Emoji>
-          {hint && <h6 className='hint'>{hint}</h6>}
+          {hint && <h4 className='hint text-center'>{hint}</h4>}
         </Card.Title>
       )}
       {failedLetters.length !== 0 && (
         <Row>
-          <Col xs={3} className='incorrect-letters'>
-            <h6>{incorrectLetters.length} incorrect letters: </h6>
+          <Col xs={6} className='incorrect-letters text-center'>
+            <h5>{incorrectLetters.length} incorrect letters: </h5>
           </Col>
-          <Col xs={9} className='incorrect-letters'>
+          <Col xs={6} className='incorrect-letters'>
             <h6>{incorrectLetters.join`, `}</h6>
           </Col>
         </Row>
@@ -65,7 +65,7 @@ const MainCard = ({
           {...(!isGameOver && { onKeyDown: handleKeyPress })}
         />
         <InputGroup.Text id='basic-addon2'>
-          &larr; type a letter
+          &larr; click here and type a letter
         </InputGroup.Text>
       </InputGroup>
 

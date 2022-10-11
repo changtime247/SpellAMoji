@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react'
 import Result from './components/Result'
-import emojis from './data/data'
-import { Container } from 'react-bootstrap'
-import { clearAwards, isALetter } from './utils'
+import { Container, Navbar } from 'react-bootstrap'
+import { clearAwards, emojis, isALetter } from './utils'
 import Footer from './components/Footer'
 import MainCard from './components/MainCard'
 
@@ -23,13 +22,13 @@ export default () => {
   const [emojiUnicode, setEmojiUnicode] = useState('')
   const inputRef = useRef(null)
   const [hint, setHint] = useState('')
+  const [isEasy, setIsEasy] = useState(true)
 
   const handleKeyPress = (event) => {
     event.preventDefault()
     let letterPressed = isALetter(event.key) && event.key
     setKeyPressed(letterPressed)
     setAllKeysPressed([...allKeysPressed, letterPressed])
-    console.log(incorrectLetters)
     if (wordFromAPI.length > 0 && isALetter(letterPressed)) {
       letterPressed = letterPressed.toUpperCase()
       if (
@@ -49,7 +48,7 @@ export default () => {
           }
         }
         if (count === 0) {
-          if (failedLetters.length === 5) {
+          if ([...new Set(failedLetters)].length >= 4) {
             setHint(
               `hint: word includes ${
                 wordFromAPI.filter(
@@ -58,7 +57,7 @@ export default () => {
               }`
             )
           }
-          if (failedLetters.length === 10) {
+          if ([...new Set(failedLetters)].length >= 9) {
             setResultBox({
               disabled: false,
               title: `Game Over. The word was '${word}'. Practice makes perfect :)`,
@@ -109,30 +108,20 @@ export default () => {
     setEmojiUnicode(unicode)
   }
 
-  const getDataFromAPI = () => {
-    // if using 3rd party api
-    // const params = {}
-    // let url = new URL('')
-    fetch('', {
-      method: 'GET',
-    })
-      .then((response) => {
-        const responseStatus = response.status
-        if (responseStatus >= 400 && responseStatus <= 500) {
-          throw Error('API error, creating random word localy!')
-        }
-        return response.json()
-      })
-      // current app will use local data since data not too extensive
-      .then((response) => {
-        wordSetter(response.word)
-        return response.status
-      })
-      .catch((error) => {
-        console.log(error)
-        const randomFruit = emojis[Math.floor(Math.random() * emojis.length)]
-        wordSetter(randomFruit)
-      })
+  const getDataFromAPI = async () => {
+    // if using 3rd party api axios
+    try {
+      if (isEasy) {
+        const eList = emojis.filter(({ name, difficulty }) => name.length < 6 && difficulty !== 'hard')
+        return wordSetter(eList[Math.floor(Math.random() * eList.length)])
+      } else {
+        const hList = emojis.filter(({ name }) => name.length > 5)
+        return wordSetter(hList[Math.floor(Math.random() * hList.length)])
+      }
+      // }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const checkIfWin = (correctlyGuessedLetters) => {
@@ -160,41 +149,67 @@ export default () => {
     }
   }
 
+  const clickEasyHard = (e) => {
+    setIsEasy(!isEasy)
+  }
+
   const incorrectLetters = [...new Set(allKeysPressed)]
     .filter((e) => e && !word.includes(e))
     .map((e) => e.toUpperCase())
 
+  // disable line below when development mode
+  // overwritng error for react input (type a letter) controlled element
+  // being used 'uncontrolled' manner
+  // error bypassed with code
+  console.log = console.warn = console.error = () => {}
+
   return (
-    <Container style={{ margin: '0 auto' }}>
-      {inputRef && (
-        <MainCard
-          emojiUnicode={emojiUnicode}
-          hint={hint}
-          incorrectLetters={incorrectLetters}
-          keyPressed={keyPressed}
-          wordFromAPI={wordFromAPI}
-          failedLetters={failedLetters}
-          allKeysPressed={allKeysPressed}
-          inputRef={inputRef}
-          resultBox={resultBox}
-          isGameOver={isGameOver}
-          handleKeyPress={handleKeyPress}
-          correctlyGuessedLetters={correctlyGuessedLetters}
-          word={word}
-          setIsGameOn={setIsGameOn}
-        ></MainCard>
-      )}
-      <Result
-        disabled={resultBox.disabled}
-        buttonLabel={resultBox.buttonLabel}
-        buttonAction={isGameOn ? continueGame : startGame}
-      />
-      {resultBox?.title && resultBox.title.length > 20 ? (
-        <h4 className='result-title text-center'>{resultBox.title}</h4>
-      ) : (
-        <h1 className='result-title text-center'>{resultBox.title}</h1>
-      )}
-      <Footer clearAwards={clearAwards}></Footer>
-    </Container>
+    <>
+      <Navbar fixed='top' className='navbar'>
+        <input
+          className='tgl tgl-flip'
+          id='cb5'
+          type='checkbox'
+          onClick={(e) => clickEasyHard(e)}
+        />
+        <label
+          className='tgl-btn'
+          data-tg-on='&nbsp;Hard'
+          data-tg-off='&nbsp;Easy'
+          htmlFor='cb5'
+        ></label>
+      </Navbar>
+      <Container style={{ margin: '0 auto' }}>
+        {inputRef && (
+          <MainCard
+            emojiUnicode={emojiUnicode}
+            hint={hint}
+            incorrectLetters={incorrectLetters}
+            keyPressed={keyPressed}
+            wordFromAPI={wordFromAPI}
+            failedLetters={failedLetters}
+            allKeysPressed={allKeysPressed}
+            inputRef={inputRef}
+            resultBox={resultBox}
+            isGameOver={isGameOver}
+            handleKeyPress={handleKeyPress}
+            correctlyGuessedLetters={correctlyGuessedLetters}
+            word={word}
+            setIsGameOn={setIsGameOn}
+          ></MainCard>
+        )}
+        <Result
+          disabled={resultBox.disabled}
+          buttonLabel={resultBox.buttonLabel}
+          buttonAction={isGameOn ? continueGame : startGame}
+        />
+        {resultBox?.title && resultBox.title.length > 20 ? (
+          <h4 className='result-title text-center'>{resultBox.title}</h4>
+        ) : (
+          <h1 className='result-title text-center'>{resultBox.title}</h1>
+        )}
+        <Footer clearAwards={clearAwards}></Footer>
+      </Container>
+    </>
   )
 }

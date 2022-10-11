@@ -1,3 +1,5 @@
+import emojis from './data/data'
+
 const isALetter = (char) => {
   return 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'.includes(char)
 }
@@ -7,4 +9,4 @@ const clearAwards = () => {
   window.location.reload()
 }
 
-export { isALetter, clearAwards }
+export { isALetter, clearAwards, emojis }

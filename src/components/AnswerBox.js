@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 export default ({ correctlyGuessedLetters, wordFromAPI }) => (
   <Container>
-    <Row className='justify-content-lg-center'>
+    <Row className='justify-content-center'>
       {/* {wordFromAPI.map((letter, index) => { */}
       {wordFromAPI.map((letter, index) => {
         return (

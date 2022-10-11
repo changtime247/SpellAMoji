@@ -165,7 +165,7 @@ export default () => {
     .map((e) => e.toUpperCase())
 
   return (
-    <Container>
+    <Container style={{ margin: '0 auto' }}>
       {inputRef && (
         <MainCard
           emojiUnicode={emojiUnicode}

@@ -131,7 +131,6 @@ input:empty {
 /* start main-btn modification */
 #main-btn {
     color: #fff;
-    width: 50vw;
     margin: 0 auto;
     box-shadow: 0 9px #999;
 }
@@ -158,6 +157,7 @@ input:empty {
     border: none;
     min-height: 15vh;
     max-height: fit-content;
+    margin: 0 auto;
 }
 
 .question {

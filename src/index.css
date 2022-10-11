@@ -1,0 +1,215 @@
+/* Variables */
+:root {
+    --clr-input-effect: #888;
+}
+
+.correct-input {
+    --clr-input-effect: #28a745;
+}
+
+.incorrect-input {
+    --clr-input-effect: #bb2525;
+}
+
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    font-size: 2rem;
+}
+
+body {
+    background: #aaa;
+    font-weight: bold;
+    margin: 3rem 0 0 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 90%;
+    width: 100%;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+}
+
+/* start of input modifications */
+input {
+    max-width: fit-content;
+    width: 3rem !important;
+}
+
+input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border-color: var(--clr-input-effect) !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px var(--clr-input-effect) !important;
+    outline: 0 none !important;
+}
+
+.input-group>.form-control {
+    flex: 0 1 auto;
+}
+
+.input-group span {
+    color: rgb(184, 26, 26);
+    margin-right: 0.25rem;
+}
+
+#input-group-custom {
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+/* input css jiggle effect  */
+input:empty {
+    animation: jiggle 0.2s 3;
+    animation-duration: 0.2s;
+    animation-name: jiggle;
+    animation-iteration-count: 5;
+    transform: rotate(-1deg);
+    transform: rotate(-1deg);
+    -webkit-animation: jiggle 0.2s 3;
+    -moz-animation-duration: 0.2s;
+    -moz-animation-name: jiggle;
+    -moz-animation-iteration-count: 5;
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+}
+
+@keyframes jiggle {
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@-moz-keyframes jiggle {
+    0% {
+        -moz-transform: rotate(-5deg);
+    }
+
+    50% {
+        -moz-transform: rotate(5deg);
+    }
+}
+
+@-webkit-keyframes jiggle {
+    0% {
+        -webkit-transform: rotate(-5deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(5deg);
+    }
+}
+
+/* end of input modifications */
+
+/* start main-btn modification */
+#main-btn {
+    color: #fff;
+    margin-top: 0.5rem;
+    box-shadow: 0 9px #999;
+}
+
+#main-btn:hover {
+    background-color: #3e8e41
+}
+
+#main-btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#main-btn-card {
+    max-width: 75vw;
+    border: none;
+}
+
+/* end main-btn modification */
+
+/* MainCard component */
+#main-card {
+    background: none;
+    border: none;
+    min-height: 15vh;
+    max-height: fit-content;
+}
+
+.question {
+    font-size: 3rem;
+    width: 3rem;
+    border: 5px solid blue !important;
+}
+
+#emojilist>* {
+    font-size: 1rem !important;
+}
+
+.card-title h1 span {
+    color: black;
+}
+
+.hint {
+    color: #007bff;
+}
+
+.incorrect-letters {
+    color: #dc3545;
+}
+
+/* Result component */
+.result-title {
+    margin-top: .95rem;
+}
+
+.hidden {
+    display: hidden;
+}
+
+.none {
+    display: none;
+}
+
+/* AnswerBox component */
+.answer-box-letters {
+    height: 3rem;
+    width: 2.5rem;
+}
+
+/* Footer component */
+
+#right-bottom-corner {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+
+.navbar {
+    border: none;
+    margin: auto 1rem;
+}

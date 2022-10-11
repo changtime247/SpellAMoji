@@ -19,7 +19,7 @@ html {
 }
 
 * {
-    font-size: 2rem;
+    font-size: 0.96rem;
 }
 
 body {
@@ -30,6 +30,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 90%;
+    /* height: 100%; */
     width: 100%;
     color: white;
 }

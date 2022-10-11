@@ -141,7 +141,7 @@ export default () => {
       setResultBox({
         disabled: false,
         title: "✨ You're correct! ✨",
-        buttonLabel: 'Try again',
+        buttonLabel: 'Spell Another One',
       })
       if (emojiUnicode) {
         localStorage.setItem(

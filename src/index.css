@@ -131,7 +131,8 @@ input:empty {
 /* start main-btn modification */
 #main-btn {
     color: #fff;
-    margin-top: 0.5rem;
+    width: 50vw;
+    margin: 0 auto;
     box-shadow: 0 9px #999;
 }
 
@@ -146,7 +147,6 @@ input:empty {
 }
 
 #main-btn-card {
-    max-width: 75vw;
     border: none;
 }
 

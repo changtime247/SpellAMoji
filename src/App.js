@@ -29,6 +29,7 @@ export default () => {
     let letterPressed = isALetter(event.key) && event.key
     setKeyPressed(letterPressed)
     setAllKeysPressed([...allKeysPressed, letterPressed])
+    console.log(incorrectLetters)
     if (wordFromAPI.length > 0 && isALetter(letterPressed)) {
       letterPressed = letterPressed.toUpperCase()
       if (
@@ -74,7 +75,7 @@ export default () => {
   const startGame = () => {
     setResultBox({
       disabled: true,
-      title: `10 tries to guess the letters. If a letter comes up more than one time, all of that same letter show up.`,
+      title: `10 tries to guess the letters.`,
     })
     setFailedLetters([])
     setCorrectlyGuessedLetters([])
@@ -159,9 +160,9 @@ export default () => {
     }
   }
 
-  const incorrectLetters = [...new Set(allKeysPressed)].filter(
-    (e) => !word.includes(e)
-  )
+  const incorrectLetters = [...new Set(allKeysPressed)]
+    .filter((e) => e && !word.includes(e))
+    .map((e) => e.toUpperCase())
 
   return (
     <Container>

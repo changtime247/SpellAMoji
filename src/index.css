@@ -12,6 +12,14 @@
     --clr-input-effect: #bb2525;
 }
 
+.success {
+    color: #28a745;
+}
+
+.fail {
+    color: #bb2525;
+}
+
 
 html {
     height: 100%;
@@ -19,7 +27,7 @@ html {
 }
 
 * {
-    font-size: 0.96rem;
+    font-size: 0.9rem;
 }
 
 body {
@@ -44,6 +52,10 @@ body {
 }
 
 /* start of input modifications */
+#form-control {
+    font-size: larger;
+}
+
 input.form-control {
     max-width: fit-content;
     width: 3rem !important;
@@ -76,12 +88,13 @@ input.form-control[type="color"]:focus,
 
 .input-group span {
     color: rgb(184, 26, 26);
-    margin-right: 0.25rem;
+    font-size: large;
 }
 
 #input-group-custom {
     max-width: fit-content;
     margin: 0 auto;
+    padding: 0;
 }
 
 /* input css jiggle effect  */
@@ -204,12 +217,18 @@ h1.text-center+h1.text-center {
 }
 
 /* AnswerBox component */
+#answer-box-row {
+    padding: auto 0;
+}
+
 .answer-box-letters {
-    height: 3rem;
-    line-height: 3rem;
-    width: 2.5rem;
-    border: 3px solid black;
+    height: 2.5rem;
+    line-height: 2.2rem;
+    font-size: 1.88rem;
+    width: 1.4rem;
+    border: 1.33px solid black;
     margin: 0 auto;
+    padding: 0;
 }
 
 /* Footer component */

@@ -1,7 +1,7 @@
 import emojis from './data/data'
 
 const isALetter = (char) => {
-  return 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'.includes(char)
+  return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(char)
 }
 
 const clearAwards = () => {

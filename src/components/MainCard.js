@@ -44,6 +44,7 @@ const MainCard = ({
       )}
       <InputGroup id='input-group-custom' className={!emojiUnicode && 'none'}>
         <Form.Control
+          id='form-control'
           className={
             keyPressed && word.includes(keyPressed)
               ? 'correct-input'
@@ -58,15 +59,14 @@ const MainCard = ({
           }
           // onKeyUp={(this.value = (e) => e.key)}
           ref={inputRef}
-          autoFocus={resultBox.disabled ? true : false}
+          // autoFocus={resultBox.disabled ? true : false}
+          autoFocus={true}
           onFocus={() => {
             setIsGameOn(false)
           }}
           {...(!isGameOver && { onKeyDown: handleKeyPress })}
         />
-        <InputGroup.Text id='basic-addon2'>
-          &larr; click here and type a letter
-        </InputGroup.Text>
+        <InputGroup.Text id='basic-addon2'>&larr; click there</InputGroup.Text>
       </InputGroup>
 
       <AnswerBox

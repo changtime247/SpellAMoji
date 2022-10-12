@@ -206,6 +206,7 @@ h1.text-center+h1.text-center {
 /* AnswerBox component */
 .answer-box-letters {
     height: 3rem;
+    line-height: 3rem;
     width: 2.5rem;
     border: 3px solid black;
     margin: 0 auto;

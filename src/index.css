@@ -1,7 +1,7 @@
 /* Variables */
 :root {
     --clr-input-effect: #888;
-    /* background: url("./background.jpg") 0 0 / cover no-repeat; */
+    background: url("./chalkboard.jpg") 0 0 / cover no-repeat;
 }
 
 .correct-input {

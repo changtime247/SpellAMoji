@@ -13,7 +13,7 @@ export default () => {
   const [isGameOver, setIsGameOver] = useState(false)
   const [resultBox, setResultBox] = useState({
     disabled: false,
-    title: 'Press start to play',
+    title: '',
     buttonLabel: "Spell A 'Moji",
   })
   const [failedLetters, setFailedLetters] = useState([])
@@ -50,13 +50,11 @@ export default () => {
           }
 
           setFailedLetters([...failedLetters, letterPressed])
-          // setFailedLetters([...new Set([...failedLetters, keyPressed])])
-          // wrong setFailedLetters([...new Set(failedLetters), keyPressed])
           setResultBox({
             disabled: true,
             title: `${9 - failedLetters.length} ${
               9 - failedLetters.length > 1 ? 'tries' : 'more try'
-            } to spell the word.`,
+            } to spell the word`,
           })
 
           if (count === 0) {
@@ -86,7 +84,7 @@ export default () => {
   const startGame = () => {
     setResultBox({
       disabled: true,
-      title: `10 tries to spell the word.`,
+      title: `10 tries to spell the word`,
     })
     setFailedLetters([])
     setCorrectlyGuessedLetters([])
@@ -175,7 +173,7 @@ export default () => {
   // overwritng error for react input (type a letter) controlled element
   // being used 'uncontrolled' manner
   // error bypassed with code
-  // console.log = console.warn = console.error = () => {}
+  console.log = console.warn = console.error = () => {}
 
   return (
     <>

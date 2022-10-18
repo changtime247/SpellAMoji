@@ -1,7 +1,6 @@
 /* Variables */
 :root {
     --clr-input-effect: #888;
-    background: url("./chalkboard.jpg") 0 0 / cover no-repeat;
 }
 
 .correct-input {
@@ -32,7 +31,7 @@ html {
 
 body {
     /* background: #aaa; */
-    background: url("./chalkboard.jpg") 0 0 / cover no-repeat;
+    background: url("./chalkboard3.jpg") 0 0 / cover no-repeat;
     font-weight: bold;
     margin: 3rem 0 0 0;
     -webkit-font-smoothing: antialiased;

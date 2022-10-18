@@ -54,7 +54,7 @@ export default () => {
             disabled: true,
             title: `${9 - failedLetters.length} ${
               9 - failedLetters.length > 1 ? 'tries' : 'more try'
-            } to spell the word`,
+            } left`,
           })
 
           if (count === 0) {
@@ -70,7 +70,7 @@ export default () => {
             if ([...new Set(failedLetters)].length >= 9) {
               setResultBox({
                 disabled: false,
-                title: `Game Over. The word was '${word}'. Practice makes perfect :)`,
+                title: `Game Over. The word was '${word}'. Practice makes perfect!`,
                 buttonLabel: "Spell Another 'Moji",
               })
               setIsGameOver(true)
@@ -84,7 +84,7 @@ export default () => {
   const startGame = () => {
     setResultBox({
       disabled: true,
-      title: `10 tries to spell the word`,
+      title: `10 tries left`,
     })
     setFailedLetters([])
     setCorrectlyGuessedLetters([])
@@ -216,9 +216,9 @@ export default () => {
           buttonAction={isGameOn ? continueGame : startGame}
         />
         {resultBox?.title && resultBox.title.length > 20 ? (
-          <h4 className={`result-title text-center ${isGameOver && 'fail'}`}>
+          <h2 className={`result-title text-center ${isGameOver && 'fail'}`}>
             {resultBox.title}
-          </h4>
+          </h2>
         ) : (
           <h1 className={`result-title text-center ${isGameOver && 'success'}`}>
             {resultBox.title}

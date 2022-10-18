@@ -38,7 +38,7 @@ const MainCard = ({
             <h5>{incorrectLetters.length} incorrect letters: </h5>
           </Col>
           <Col xs={6} className='incorrect-letters'>
-            <h6>{incorrectLetters.join`, `}</h6>
+            <h4>{incorrectLetters.join`, `}</h4>
           </Col>
         </Row>
       )}
